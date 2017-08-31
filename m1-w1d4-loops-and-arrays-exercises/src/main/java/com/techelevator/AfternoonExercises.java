@@ -10,9 +10,12 @@ public class AfternoonExercises {
 	 firstLast6([13, 6, 1, 2, 3]) → false
 	 */
 	public boolean firstLast6(int[] nums) {
+		if((nums[0] == 6) || ((nums.length) - 1) == 6){
+			return true;
+		}else{
 		return false;
 	}
-
+	}
 	/*
 	 Given an array of ints, return true if the array is length 1 or more, and the first element and
 	 the last element are equal.

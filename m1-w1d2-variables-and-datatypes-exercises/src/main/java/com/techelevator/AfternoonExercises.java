@@ -327,11 +327,12 @@ System.out.println(totalBooksEachShelfContains);
         her seven guests, how many will each have?
         */
 
-	int totalBaked = 17;
+	int totalBaked = 10 % 1 ;
 	int totalGuests = 7;
 	int totalCroissantsHandedOut = totalBaked / totalGuests;
 	String perPerson = "Per Person";
-	System.out.println(totalCroissantsHandedOut + " " + perPerson);
+	System.out.println(totalBaked);
 	}
+
 
 }
