@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Scanner;
+
 /*
  The foot to meter conversion formula is:
  	m = f * 0.3048
@@ -17,9 +19,30 @@ package com.techelevator;
  */
 
 public class LinearConvert {
-
+			// the main method is this:
 	public static void main(String[] args) {
-
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Please enter the length: ");
+							/*nextDouble() is going to search for next double until it runs i					nto sometihng the user puts in thats NOT a "Double variable"*/
+		double length = input.nextDouble();
+				/*this gets rid of the "enter button" the person hits*/
+		input.nextLine();
+		
+		System.out.print("Is the measurement in (m)eter, or (f)eet? ");
+			/*this eats the return again*/
+		String lengthType = input.nextLine();
+		
+		System.out.print(length + lengthType + " " + "is" + " " + doConversion(length, lengthType) + (lengthType.toLowerCase().startsWith("m") ? "f" : "m"));
+	}//second method:
+	public static double doConversion(double length, String lengthType){
+		double resultMeters = length * 0.3048;
+		double resultFeet = length * 3.2808399;
+		
+		if(lengthType.equalsIgnoreCase("m")){
+			return resultFeet;
+		}else{
+			return resultMeters;
+		}
 	}
-
 }

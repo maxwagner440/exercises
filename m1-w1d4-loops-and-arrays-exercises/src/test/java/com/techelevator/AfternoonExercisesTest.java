@@ -182,5 +182,5 @@ public class AfternoonExercisesTest {
 		assertEquals("Input: sum28(new int[]{2, 3, 2, 2, 4, 2, 2})", false, exercises.sum28(new int[]{2, 3, 2, 2, 4, 2, 2}));
 		assertEquals("Input: sum28(new int[]{1, 2, 3, 4})", false, exercises.sum28(new int[]{1, 2, 3, 4}));
 	}
+	}
 
-}
