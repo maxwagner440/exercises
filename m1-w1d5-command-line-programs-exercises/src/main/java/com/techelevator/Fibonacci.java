@@ -29,14 +29,22 @@ public class Fibonacci {
 		
 		originalInput = input.nextInt();
 		
+		input.nextLine();
+		
+		fibbConvert(originalInput);
+		
 	}
 
-	public static int[] fibbConvert(int originalInput){
-		int[] fibOutput;
-		int i;
-		for(i = 2; i < originalInput; i++){
-			fibOutput[i] = fibOutput[i - 1] + fibOutput[i - 2];
-		}	return fibOutput;
+	public static void fibbConvert(int originalInput){
+		int previous = 0;
+			System.out.print(previous);
+		for(int next = 1; next < originalInput; ){
+			System.out.print(", " + next);
+			int temp = previous + next;
+			previous = next;
+			next = temp;
+		}	
+		
 		
 	}
 }

@@ -9,7 +9,9 @@ public class Exercises {
 	 helloName("X") → "Hello X!"
 	 */
 	public String helloName(String name) {
-		return null;
+		String saysHello = "Hello " + name + "!";
+		
+		return saysHello;
 	}
 
 	/*
@@ -20,7 +22,10 @@ public class Exercises {
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
 	public String makeAbba(String a, String b) {
-		return null;
+		String forwardString = a + b;
+		String backwardsString = b + a;
+		
+		return forwardString + backwardsString;
 	}
 
 	/*
@@ -32,7 +37,11 @@ public class Exercises {
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
 	public String makeTags(String tag, String word) {
-		return null;
+		String beginningTag = "<" + tag + ">";
+		String endingTag = "<" + "/" + tag + ">";
+		String theTag = beginningTag + word + endingTag;
+		return theTag;
+		
 	}
 
 	/*

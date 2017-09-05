@@ -37,13 +37,20 @@ public class TempConvert {
 		
 		String farOrCel = userInput.nextLine();
 		
-		
+		System.out.println(inputTemp + farOrCel + " is " + theConversion(inputTemp, farOrCel));
 		
 	}
-	public static double theConversion(int inputTemp, String farOrCel){
+	public static String theConversion(int inputTemp, String farOrCel){
 		if(farOrCel.equalsIgnoreCase("F")){
-			
-				
-		})
+			double inCelcius = (inputTemp - 32) / 1.8;
+			String stringInCelcius = inCelcius + "C";
+			return stringInCelcius;	
+		}else if(farOrCel.equalsIgnoreCase("C")){
+			double inFarenheit = (inputTemp * 1.8) + 32;
+			String stringInFar = inFarenheit + "F";
+			return stringInFar;
+		}else{
+			return null;
+		}
 	}
 }
