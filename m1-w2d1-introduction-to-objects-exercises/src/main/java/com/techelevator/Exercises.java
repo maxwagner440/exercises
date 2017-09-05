@@ -53,7 +53,14 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		return null;
+		String compTogether;
+		
+		String begin = out.substring(0, 2);
+		String end = out.substring(2, 4);
+		
+		compTogether = begin + word + end;
+		
+		return compTogether;
 	}
 
 	/*
@@ -64,7 +71,9 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+		String lastTwo = str.substring(str.length() - 2, str.length());
+		String returnString = lastTwo + lastTwo + lastTwo;
+		return returnString;
 	}
 
 	/*
@@ -76,7 +85,16 @@ public class Exercises {
 	 firstTwo("ab") → "ab"
 	 */
 	public String firstTwo(String str) {
-		return null;
+		if(str.length() >= 2){
+			String theFirstTwo = str.substring(0, 2);
+			return theFirstTwo;
+		}else if(str.length() == 1){
+			String justOne = str;
+			return justOne;
+		}else{
+			return "";
+		}
+	
 	}
 
 	/*
@@ -86,7 +104,8 @@ public class Exercises {
 	 firstHalf("abcdef") → "abc"
 	 */
 	public String firstHalf(String str) {
-		return null;
+		String strToReturn = str.substring(0, (str.length() / 2));
+		return strToReturn;
 	}
 
 	/*
@@ -97,7 +116,8 @@ public class Exercises {
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
-		return null;
+		String strToReturn = str.substring(1, str.length() - 1);
+		return strToReturn;
 	}
 	
 	/*
@@ -109,6 +129,11 @@ public class Exercises {
 	 comboString("aaa", "b") → "baaab"
 	 */
 	public String comboString(String a, String b) {
+		if(a.length() > b.length()){
+			return b + a + b;
+		}else if(a.length() < b.length()){
+			return a + b + a;
+		}
 		return null;
 	}
 	
@@ -120,7 +145,11 @@ public class Exercises {
 	 nonStart("shotl", "java") → "hotlava"
 	 */
 	public String nonStart(String a, String b) {
-		return null;
+		String firstOne = a.substring(1);
+		String secondOne = b.substring(1);
+		
+		String answer = firstOne + secondOne;
+		return answer;
 	}
 
 	/*
@@ -131,7 +160,10 @@ public class Exercises {
 	 left2("Hi") → "Hi"
 	 */
 	public String left2(String str) {
-		return null;
+		String firstTwo = str.substring(0, 2);
+		String lastNums = str.substring(2, str.length());
+		String theAnswer = lastNums + firstTwo;
+		return theAnswer;
 	}
 
 	/*
@@ -142,7 +174,10 @@ public class Exercises {
 	 right2("Hi") → "Hi"
 	 */
 	public String right2(String str) {
-		return null;
+		String firstTwo = str.substring(0, str.length() - 2);
+		String lastNums = str.substring(str.length() - 2, str.length());
+		String theAnswer = lastNums + firstTwo;
+		return theAnswer;
 	}
 
 	/*
@@ -153,7 +188,14 @@ public class Exercises {
 	 theEnd("oh", true) → "o"
 	 */
 	public String theEnd(String str, boolean front) {
-		return null;
+		if(front == true){
+			String thisIsTrue = str.substring(0, 1);
+			return thisIsTrue;
+		}else{
+			String thisIsFalse = str.substring(str.length() - 1, str.length());
+			return thisIsFalse;
+		}
+		
 	}
 
 	/*
@@ -164,7 +206,12 @@ public class Exercises {
 	 withouEnd2("ab") → ""
 	 */
 	public String withouEnd2(String str) {
-		return null;
+		if(str.length() > 1){
+			String noEnds = str.substring(1, str.length() - 1);
+			return noEnds;
+		}else{
+			return "";
+		}
 	}
 
 	/*
@@ -175,7 +222,9 @@ public class Exercises {
 	 middleTwo("Practice") → "ct"
 	 */
 	public String middleTwo(String str) {
-		return null;
+		String firstMiddle = str.substring((str.length() / 2) - 1, (str.length() / 2));
+		String secondMiddle = str.substring((str.length() / 2), (str.length() / 2) + 1);
+		return firstMiddle + secondMiddle;
 	}
 
 	/*
@@ -185,9 +234,18 @@ public class Exercises {
 	 endsLy("oddy") → false
 	 */
 	public boolean endsLy(String str) {
-		return false;
+		String isThisLy = "ly";
+		String theActualString = str.substring(str.length() - 2, str.length());
+		if(str.length() >0){
+			
+		}if(theActualString.compareTo(isThisLy) == 0){
+			return true;
+		}else{
+			return false;
+		}
+	
 	}
-
+		
 	/*
 	 Given a string and an int n, return a string made of the first and last n chars from the string. The 
 	 string length will be at least n.
