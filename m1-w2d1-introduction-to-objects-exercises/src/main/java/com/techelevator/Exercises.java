@@ -234,17 +234,15 @@ public class Exercises {
 	 endsLy("oddy") → false
 	 */
 	public boolean endsLy(String str) {
-		String isThisLy = "ly";
-		String theActualString = str.substring(str.length() - 2, str.length());
-		if(str.length() >0){
-			
-		}if(theActualString.compareTo(isThisLy) == 0){
+		
+			if(str.endsWith("ly") == true){
 			return true;
 		}else{
 			return false;
 		}
+		}
 	
-	}
+	
 		
 	/*
 	 Given a string and an int n, return a string made of the first and last n chars from the string. The 
@@ -254,7 +252,11 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
-		return null;
+		String backSide = str.substring(str.length() - n);
+		String frontSide = str.substring(0, n);
+		
+		return frontSide + backSide;
+		
 	}
 
 	/*
@@ -266,7 +268,14 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int index) {
-		return null;
+		if(index  <= (1/2) * str.length()){
+			String newString = str.substring(index, (index + 2));
+			return newString;
+		}else{
+			String newString2 = str.substring(0, 2);
+			return newString2;
+		}
+		
 	}
 
 	/*
@@ -277,7 +286,8 @@ public class Exercises {
 	 middleThree("solving") → "lvi"
 	 */
 	public String middleThree(String str) {
-		return null;
+		String newMiddle = str.substring((str.length() / 2) - 1, (str.length() / 2) + 2);
+		return newMiddle;
 	}
 
 	/*
@@ -289,9 +299,15 @@ public class Exercises {
 	 hasBad("xxbadxx") → false
 	 */
 	public boolean hasBad(String str) {
-		return false;
-	}
+		if(str.startsWith("bad") || str.startsWith("bad", 1)){
+			return true;
+		}
+			return false;	
+		}
+		
 
+		
+	
 	/*
 	 Given a string and a non-negative int n, return a larger string that is n copies of the original string.
 	 stringTimes("Hi", 2) → "HiHi"
@@ -299,8 +315,13 @@ public class Exercises {
 	 stringTimes("Hi", 1) → "Hi"
 	 */
 	public String stringTimes(String str, int n) {
-		return null;
+		String newString = new String();
+		for( ;n > 0; n--){
+			newString += str;
+		}return newString;
 	}
+		
+	
 
 	/*
 	 Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or 
@@ -310,18 +331,38 @@ public class Exercises {
 	 frontTimes("Abc", 3) → "AbcAbcAbc"
 	 */
 	public String frontTimes(String str, int n) {
-		return null;
+		String newString1 = new String();
+		String newString2 = str.substring(0, 3);
+		String newString3 = new String();
+		if( str.length() < 3){
+			for( ; n > 0; n--){
+				newString1 += str;
+			} return newString1;
+		}else {
+		for( ; n > 0; n--){
+			newString3 += newString2;
+		} return newString3;
+		}
+	
 	}
 
 	/*
 	 Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
 	 countXX("abcxx") → 1
 	 countXX("xxx") → 2
-	 countXX("xxxx") → 
+	 countXX("xxxx") → 3
 	 */
 	public int countXX(String str) {
-		return 0;
+		int counter = 0;
+		for(int i = 0; i < str.length() - 1; i++){
+			if(str.substring(i, i + 2).equals("xx")){
+				counter++;
+			}
+			
+		}return counter;
+		
 	}
+	
 
 	/*
 	 Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
@@ -340,7 +381,13 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String newString = str.substring(0, 1);
+		for(int i = 0; i < str.length(); i++){
+			if(i % 2 != 0){
+			str = str.substring(0, i-1) + "" + str.substring(i, str.length());
+			}
+		}
+		return newString + str;
 	}
 
 	/*
@@ -350,7 +397,11 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
-		return null;
+		String newString = new String();
+		for(int i = 0; i < str.length(); i++){
+			newString += str.substring(0, i);
+		}
+		return newString + str;
 	}
 
 	/*
@@ -372,7 +423,8 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		str.replace("x", " ");
+		return str;
 	}
 
 	/*
@@ -382,7 +434,15 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String newString1 = "";
+		for(int i = 0; i < str.length() ; i += 4){
+			newString1 += str.charAt(i);
+			if(i+1 < str.length()){
+				newString1 += str.charAt(i + 1);
+			}
+		
+		}
+		return newString1;
 	}
 
 	/*
