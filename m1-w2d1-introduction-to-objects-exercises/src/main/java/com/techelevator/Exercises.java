@@ -453,7 +453,14 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+		String newString ="";
+		for(int i = 0; i < str.length() - 1; i++){
+			if(str.substring(i, i + 3).equals("yak")){
+			newString = str.trim().substring(i, i + 3); 	
+			}
+		}
+		
+		return newString;
 	}
 	
 }
