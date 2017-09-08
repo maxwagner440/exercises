@@ -412,7 +412,19 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		//what if its less than two
+		if(str.length() <= 2){
+			return 0;
+		}
+		//get the last two characters
+		String lastTwo = str.substring(str.length() -2, str.length());
+		//go thru the string and find how many times it's in there
+		int counter = 0;
+		for(int i = 0; i < str.length() - 2; i++){
+			if(str.substring(i, i + 2).equals(lastTwo)){
+				counter++;
+			}
+		}return counter;
 	}
 
 	/*

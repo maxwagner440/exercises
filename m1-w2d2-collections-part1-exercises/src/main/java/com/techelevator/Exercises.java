@@ -91,15 +91,22 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		List<Integer> integerList = new ArrayList<Integer>();
-		List<Double> doubleList = new ArrayList<Double>();
-		List<Double> doubleList2 = new ArrayList<Double>();
+		List<Double> doubleList = new ArrayList<>();
+		//Create List<double>. 
+		//change array of ints to array of doubles
+		//divide each int in array by 2
+		//put array of doubles in List of doubles
+		double[] doubleArrays = new double[intArray.length];
 		for(int i = 0; i < intArray.length; i++){
+			doubleArrays[i] = (double) intArray[i];
+			doubleArrays[i] = doubleArrays[i] / 2;
+		}
+		for(double i : doubleArrays){
+			doubleList.add(i);
+		}
 		
-			doubleList.add(i, (double) intArray[i]);
-		}}
-		
-	
+		return doubleList;
+	}
 	/*
 	 Given a List of Integers, return the largest value.
 	 findLargest( [11, 200, 43, 84, 9917, 4321, 1, 33333, 8997] ) -> 33333
@@ -121,14 +128,15 @@ public class Exercises {
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
 		List<Integer> oddOne = new ArrayList<Integer>();
+		//for(int i = 0; i < integerArray.length; i++){
+		
 		for(int i = 0; i < integerArray.length; i++){
-			if(integerArray.equals(i % 1 == 0))
-				oddOne.add(i, integerArray[i]);
+			if(integerArray[i] % 2 != 0){
+			oddOne.add(integerArray[i]);
 			}
 			
-			
-		return oddOne;
-	
+		}return oddOne;	
+				
 	}
 	
 	/* 
@@ -139,7 +147,18 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+		boolean isFound = false;
+		for(Integer newInt : integerList){
+			if(newInt == intToFind){
+				if(isFound){
+					return true;
+				}
+				isFound = true;
+			}
+		}return false;
+			
+		
+	
 	}
 	
 	/*
@@ -155,7 +174,20 @@ public class Exercises {
 	 HINT: To convert an integer x to a string you can call x.toString() in your code (e.g. if x = 1 then x.ToString() equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> stringList = new ArrayList<>();
+		for(Integer i : integerArray){
+			if(i % 15 == 0){
+				stringList.add("FizzBuzz");
+			}else if(i % 5 == 0){
+				stringList.add("Buzz");
+			}else if(i % 3 == 0){
+				stringList.add("Fizz");
+			}else{
+				stringList.add(i.toString());
+			}
+		}
+		
+		return stringList;
 	}
 
 	/*
@@ -165,9 +197,17 @@ public class Exercises {
 	 distinctValues( ["jingle", "bells", "jingle", "bells", "jingle", "all", "the", "way"] ) -> ["jingle", "bells", "all", "the", "way"]
 	 */
 	public List<String> distinctValues(List<String> stringList) {
-		return null;
+		//Create a Set and put values from String into the Set
+		//return the Set
+		Set<String> newSet = new HashSet<>(stringList);
+		for(int i = 0; i < stringList.size(); i++){
+			newSet.addAll(stringList);
+		}
+		
+		
+		return newSet;
 	}
-
+//HAD TO GIVE UP UNFORTUNATELY!!!
 	/*
 	 Given two lists of Integers, interleave them beginning with the first element in the first list followed
 	 by the first element of the second. Continue interleaving the elements until all elements have been interwoven.
@@ -176,7 +216,16 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> wovenList = new ArrayList<>();
+		
+		int minLength = Math.min(listOne.size(), listTwo.size());
+		
+		for(int i = 0; i < minLength; i++){
+			wovenList.add(listOne.get(i));
+			wovenList.add(listTwo.get(i));
+		}
+		
+		return wovenList;
 	}
 
 	/*

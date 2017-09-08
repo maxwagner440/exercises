@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Exercises {
@@ -34,7 +35,25 @@ public class Exercises {
 	 * 
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+		Map<String, String> theAName = new HashMap<>();
+			theAName.put("rhino", "Crash");
+			theAName.put("giraffe", "Tower");
+			theAName.put("elephant", "Herd");
+			theAName.put("lion", "Pride");
+			theAName.put("crow", "Murder");
+			theAName.put("pigeon", "Kit");
+			theAName.put("flamingo", "Pat");
+			theAName.put("deer", "Herd");
+			theAName.put("dog", "Pack");
+			theAName.put("crocodile", "Float");
+	
+			if(theAName.get(animalName.toLowerCase()) == null){
+			return "unknown";
+			}
+			else{
+				return theAName.get(animalName.toLowerCase());
+		}
+	
 	}
 
 	/*
@@ -60,7 +79,21 @@ public class Exercises {
 	 * 
 	 */
 	public Double isItOnSale(String itemNumber) {
-		return null;
+		double salePercent = 0.00;
+		Map<String, Double> skuList = new HashMap<>();
+			skuList.put("KITCHEN4001", 0.20);
+			skuList.put("GARAGE1070", 0.15);
+			skuList.put("LIVINGROOM", 0.10);
+			skuList.put("KITCHEN6073", 0.40);
+			skuList.put("BEDROOM3434", 0.60);
+			skuList.put("BATH0073", 0.15);
+			
+		if(skuList.get(itemNumber) == null){
+			return 0.00;
+		}else
+			
+			return skuList.get(itemNumber);
+		
 	}
 	
 	/*
@@ -74,7 +107,26 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		//figure out Peter's money
+		//figure out Paul's money
+//1. get variable out of map		
+		int petersMoney = peterPaul.get("Peter");
+		int paulsMoney = peterPaul.get("Paul");
+//2. condition		
+		//if Paul has less than 1000 and more than 0
+		
+		if(paulsMoney < 1000 && petersMoney > 0){
+			
+			int stolenMoney = petersMoney / 2;
+			paulsMoney += stolenMoney;
+			petersMoney -= stolenMoney;
+//3. puts back into map	
+		}
+		//take 1/2 of Peters money and give it to Paul
+		peterPaul.put("Paul", paulsMoney);
+		peterPaul.put("Peter", petersMoney);
+		
+		return peterPaul;
 	}
 	
     /*
@@ -87,7 +139,25 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		//if Peter has 5000 & Paul has 10000 then create new key point on current map (PeterPaulPartnership)
+		int petersMoney = peterPaul.get("Peter");
+		int peterNew = 0;
+		int paulsMoney = peterPaul.get("Paul");
+		int paulNew = 0;
+		if(petersMoney >= 5000 && paulsMoney >= 10000){
+			Integer newRelMon = ((petersMoney + paulsMoney ) /4);
+			peterNew = (petersMoney *3/4);
+			paulNew = (paulsMoney *3/4);
+			peterPaul.put("Peter", peterNew);
+			peterPaul.put("Paul", paulNew);
+			peterPaul.put("PeterPaulPartnership", newRelMon);
+			
+		}
+		
+		//PPP is 1/4 of both account amounts combined 
+		//return a modifed peterPaulPartnership
+		
+		return peterPaul;
 	}
 	
 	/*
@@ -114,7 +184,21 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		return null;
+		Map<String, Integer> counts = new HashMap<>();
+		for(String word : words){
+			//if not in Map, put in map with count 1
+			if(counts.containsKey(word)){
+				int currentCount = counts.get(word);
+				currentCount++;
+				counts.put(word, currentCount); //overwrites what was there and puts incremented value back in.
+			}else{
+				counts.put(word, 1);
+			}
+			//if it is in Map, increment count
+		}
+		
+		return counts;
+		
 	}
 	
 	/*
@@ -129,7 +213,25 @@ public class Exercises {
 	 * 
 	 */
 	public Map<Integer, Integer> integerCount(int[] ints) {
-		return null;
+		Map<Integer, Integer> withKey = new HashMap<>();
+		//create int/int Map
+		//first int is the value of the Array given. 
+		//second int is the number of times that number exists in the Array. Need a counter
+		int currentCount = 0;
+		for(int i : ints){
+			if(i <= 1){
+				withKey.put(i, i);
+			}else if(withKey.containsKey(i)){
+				currentCount++;
+				withKey.put(i, currentCount);
+				
+			}else{
+				
+			}
+		}
+		
+		
+		return withKey;
 	}
 	
 	/*
