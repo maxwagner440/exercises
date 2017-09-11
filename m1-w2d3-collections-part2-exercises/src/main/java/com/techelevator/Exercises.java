@@ -80,7 +80,7 @@ public class Exercises {
 	 * 
 	 */
 	public Double isItOnSale(String itemNumber) {
-		double salePercent = 0.00;
+		
 		Map<String, Double> skuList = new HashMap<>();
 			skuList.put("KITCHEN4001", 0.20);
 			skuList.put("GARAGE1070", 0.15);
@@ -89,11 +89,11 @@ public class Exercises {
 			skuList.put("BEDROOM3434", 0.60);
 			skuList.put("BATH0073", 0.15);
 			
-		if(skuList.get(itemNumber) == null){
-			return 0.00;
+		if(skuList.containsKey(itemNumber.toUpperCase())){
+			return skuList.get(itemNumber.toUpperCase());
 		}else
 			
-			return skuList.get(itemNumber);
+			return 0.00;
 		
 	}
 	
@@ -228,22 +228,20 @@ public class Exercises {
 		//create int/int Map
 		//first int is the value of the Array given. 
 		//second int is the number of times that number exists in the Array. Need a counter
-		int currentCount = 0;
-		for(int i : ints){
-			if(i <= 1){
-				withKey.put(i, i);
-			}else if(withKey.containsKey(i)){
-				currentCount++;
-				withKey.put(i, currentCount);
-				
-			}else{
-				
-			}
+			int currentCount = 1;
+			for(int i = 0; i < ints.length ; i++){
+				if(withKey.containsKey(ints[i])){
+				withKey.replace(withKey.get(ints[i]), currentCount++);
+				}
+				else{
+				withKey.put(ints[i], currentCount);
+			}	
+			}return withKey;
 		}
 		
+		//DARN IT!!!!
 		
-		return withKey;
-	}
+	
 	
 	/*
 	 * Given an array of strings, return a Map<String, Boolean> where each different string is a key and value
