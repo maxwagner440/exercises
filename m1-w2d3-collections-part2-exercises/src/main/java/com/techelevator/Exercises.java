@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -155,7 +156,7 @@ public class Exercises {
 		}
 		
 		//PPP is 1/4 of both account amounts combined 
-		//return a modifed peterPaulPartnership
+		//return a modified peterPaulPartnership
 		
 		return peterPaul;
 	}
@@ -169,7 +170,17 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+		//create a string, string Map. 
+		//every map key = the first letter of each word
+		//every map value = the last letter of that word
+		Map<String, String> firstAndLast = new HashMap<>();
+		
+		for(int i = 0; i < words.length; i++){
+			String newI	= words[i].substring(0, 1);
+			String newIV = words[i].substring(words[i].length() - 1, words[i].length());
+			firstAndLast.put(newI, newIV);
+		}
+		return firstAndLast;
 	}
 	
 	/*
@@ -244,8 +255,35 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
+		//create Map= string, boolean
+		//key = string value
+		//map value = true if key appears 2x or more in "words"
+		
+		Map<String, Integer> ifExistsTwiceC = new HashMap<>();
+		Map<String, Boolean> ifExistsTwice = new HashMap<>();
+	
+		for(String i : words){
+			if(ifExistsTwiceC.containsKey(i)){
+				int counter = ifExistsTwiceC.get(i);
+				counter++;
+				if(ifExistsTwiceC.get(ifExistsTwiceC) >= 2){
+					ifExistsTwice.put(i, true);	
+				}else{
+			}
+					
+			}else{
+				ifExistsTwiceC.put(i, 1);
+			}return ifExistsTwice;
+			
+			
+		}return ifExistsTwice;
+			
+			
+		
 	}
+		
+		
+
 	
 	/*
 	 * Given two maps, Map<String, Integer>, merge the two into a new map, Map<String, Integer> where keys in Map2, 
@@ -258,7 +296,28 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse, Map<String, Integer> remoteWarehouse) {
-		return null;
+		//Create a new Map = String, Integer. Put 1st Map given into the new map
+		//If key exists in new Map; add both Map values to create new value
+		//If key doesn't exist in new Map, add to new Map
+		
+		Map <String, Integer> putTogether = new HashMap<>();
+		
+		putTogether.putAll(mainWarehouse);
+	
+
+			if(remoteWarehouse.containsKey(putTogether)){
+				//take object value and add it to putTogether's value.
+				int newSum = putTogether.get(putTogether) + remoteWarehouse.get(remoteWarehouse);
+				putTogether.put(putTogether.toString(), newSum);
+			}else{
+				putTogether.entrySet();
+			}
+		
+			
+			
+		
+		
+		return putTogether;
 	}
 
 	/*
@@ -277,6 +336,23 @@ public class Exercises {
 	 * 
 	 */
 	public Map<String, Integer> last2Revisted(String[] words) {
-		return null;
+		
+		Map<String, Integer> subStringM = new HashMap<>();
+		
+		int counter = 0;
+		for(int i = 0; i < words.length - 2; i++){
+			
+			String compare = words[i].substring(words[i].length() - 2, words[i].length());
+			for(int j = 0; j < words[i].length() - 2; i++){
+				if(compare.equals(words[j].substring(j, j + 2))){
+					counter++;
+				}else{
+						
+				}
+			}
+			subStringM.put(words[i], counter);
+			}
+			
+		return subStringM;
 	}
 }
