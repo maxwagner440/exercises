@@ -302,19 +302,18 @@ public class Exercises {
 		
 		putTogether.putAll(mainWarehouse);
 	
-
-			if(remoteWarehouse.containsKey(putTogether)){
+		for(String s : remoteWarehouse.keySet()){
+			if(putTogether.containsKey(s)){
 				//take object value and add it to putTogether's value.
-				int newSum = putTogether.get(putTogether) + remoteWarehouse.get(remoteWarehouse);
-				putTogether.put(putTogether.toString(), newSum);
+				int newSum = putTogether.get(s) + remoteWarehouse.get(s);
+				putTogether.put(s, newSum);
 			}else{
-				putTogether.entrySet();
+				putTogether.put(s, remoteWarehouse.get(s));
 			}
+		}
+			
 		
 			
-			
-		
-		
 		return putTogether;
 	}
 
