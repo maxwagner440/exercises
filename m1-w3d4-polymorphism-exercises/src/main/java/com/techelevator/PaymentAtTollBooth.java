@@ -7,7 +7,7 @@ public class  PaymentAtTollBooth {
 
 	public static void main(String[] args) {
 	
-		String s = String.format("%s %25s %15s", "Vehicle", "Distance Traveled", "Toll $");
+		String s = String.format("%s %25s %10s", "Vehicle", "Distance Traveled", "Toll $");
 	System.out.println(s);
 	
 	List<Vehicle> theVehicles = new ArrayList<>();
@@ -28,8 +28,8 @@ public class  PaymentAtTollBooth {
 	for(Vehicle x : theVehicles){
 		//x.setDistance(98.0);
 		double distance = 98;
-		String thisString = String.format("%s %25s %15s", x.toString(),  distance, x.calculateToll(distance));
-		System.out.println(String.format(thisString));
+		String thisString = String.format("%-5s %20s %15s", x.toString(),  distance, x.calculateToll(distance));
+		System.out.println(thisString);
 	}
 	
 	}
