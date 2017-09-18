@@ -6,10 +6,9 @@ import java.util.Map;
 public class PostalService implements DeliveryDriver {
 
 	private double weight;
-	private boolean thirdClass = true;
 	private double rate = 0;
 	private double wVar;
-
+	private String theClass;
 	 
 	 
 	 
@@ -31,7 +30,7 @@ public class PostalService implements DeliveryDriver {
 	}
 
 	@Override
-	public double calculateRate(int distance, double weight, boolean inOunces, String theClass) {
+	public double calculateRate(int distance, double weight, String poundsOrOunces, String theClass) {
 		Map<Integer, Double> theFirstClass = new HashMap<Integer, Double>();
 		theFirstClass.put(1, 0.035);
 		theFirstClass.put(2, 0.040);
@@ -57,18 +56,21 @@ public class PostalService implements DeliveryDriver {
 		theThirdClass.put(6, 0.0170);
 		
 		Map<Integer, Double> mapVar = new HashMap<Integer, Double>();
-		if(! inOunces){
-			weight = weight * 16.0;
+		if(poundsOrOunces == "P"){
+			weight = weight * 16;
 		}
 		
 		if(theClass.contentEquals("First")){
 			mapVar.putAll(theFirstClass);
+			this.theClass = "First";
 		}
 		else if(theClass.contentEquals("Second")){
 			mapVar.putAll(theSecondClass);
+			this.theClass = "Second";
 		}
 		else if(theClass.contentEquals("Third")){
 			mapVar.putAll(theThirdClass);
+			this.theClass = "Third";
 		}
 		
 		if(weight <= 2){
@@ -92,9 +94,6 @@ public class PostalService implements DeliveryDriver {
 		else{
 			
 		}
-		
-		
-		
 			
 		double perMileRate = mapVar.get(this.getwVar());
 		double rate = perMileRate * distance;
@@ -102,7 +101,7 @@ public class PostalService implements DeliveryDriver {
 	}
 
 	public String toString(){
-		return "The rate for a package that weighs " + weight + " in ounces is " + rate + ".";
+		return "Postal Service" + theClass + " Class";
 	}
 
 	public double getwVar() {

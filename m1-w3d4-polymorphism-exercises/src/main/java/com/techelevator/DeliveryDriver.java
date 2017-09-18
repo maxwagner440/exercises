@@ -4,7 +4,7 @@ public interface DeliveryDriver {
 	
 	public double getWeight();
 	public int getDistance();
-	public double calculateRate(int distance, double weight, boolean inOunces, String theClass);
+	public double calculateRate(int distance, double weight, String poundsOrOunces, String theClass);
 		
 	}
 
