@@ -65,4 +65,9 @@ public class KataFizzBuzzTest {
 	public void testHasA35(){
 		assertEquals("FizzBuzz", sut.fizzBuzz(35));
 	}
+	
+	@Test
+	public void testHasA57(){
+		assertEquals("Buzz", sut.fizzBuzz(57));
+	}
 }

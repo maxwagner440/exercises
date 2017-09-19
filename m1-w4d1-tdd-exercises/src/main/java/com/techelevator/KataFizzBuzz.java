@@ -25,12 +25,14 @@ public class KataFizzBuzz {
 		else if(num % 15 == 0){
 			return "FizzBuzz";
 		}
+		
 		else if(num % 5 == 0 || (firstChar.equalsIgnoreCase("5") && num > 9) ){
 			return "Buzz";
 		}
 		else if(num % 3 == 0 || (firstChar.equalsIgnoreCase("3") && num > 9) || (secondChar.equalsIgnoreCase("3") && num > 9)){
 			return "Fizz";
 		}
+		
 		else{
 			return num.toString(); 
 		}
