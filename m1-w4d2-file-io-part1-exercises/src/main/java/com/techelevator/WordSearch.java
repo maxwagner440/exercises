@@ -19,7 +19,7 @@ public class WordSearch {
 	String caseSensitive = caseSense.nextLine();
 //using a While loop to see if User inputted T or F. If not, it will continue to output the question.
 	while(! (caseSensitive.toUpperCase().equals("T")) && ! (caseSensitive.toUpperCase().equals("F"))){
-		System.out.println("Do you want us case sensitivity ((T)rue or (F)alse)?");
+		System.out.println("Do you want use case sensitivity ((T)rue or (F)alse)?");
 		caseSensitive = caseSense.nextLine();
 	}
 	
@@ -45,7 +45,7 @@ public class WordSearch {
 				}	
 				else{
 					System.out.println("Nope, not in here!");
-					break;
+					
 				}
 			}
 			else if(caseSensitive.toUpperCase().equals("F")){
@@ -54,7 +54,7 @@ public class WordSearch {
 					}	
 				else{
 					System.out.println("Nope, not in here!");
-					break;
+					
 				}
 			}
 			
