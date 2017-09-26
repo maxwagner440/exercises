@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +13,20 @@ public class Exercises {
     arrayDeduplication([1, 1, 1]) → [1]
     */
     public int[] arrayDeduplication(int[] nums) {
-        return null;
+        List<Integer> temp = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+        	if(temp.contains(nums[i])){
+        	}
+        	else{
+        	temp.add(nums[i]);
+        	}	
+        }
+        
+        int[] nums2 = new int[temp.size()];
+        for(int i = 0; i < temp.size() ; i++){
+        	nums2[i] = temp.get(i);
+        }
+    	return nums2;
     }
     
     /*
@@ -24,7 +38,29 @@ public class Exercises {
         arrayIntersection([], []) → []
     */
     public int[] arrayIntersection(int[] a, int[] b) {
-        return null;
+       int lengthM = 0;
+    	if(a.length > b.length){
+    	   lengthM = a.length;
+       }
+       else if(a.length < b.length){
+    	   lengthM = a.length;
+       }
+    	List<Integer> c = new ArrayList<>();
+    	List<Integer> d = new ArrayList<>();
+    	List<Integer> e	= new ArrayList<>();
+    	for(int i = 0; i < lengthM; i++){
+    		c.add(a[i]);
+    		d.add(b[i]);
+    		if(d.contains(c.get(i))){
+    			e.add(c.get(i));
+    		}	
+    	}
+    	int[] x = new int[e.size()];
+    	for(int ix : e){
+    		x[ix] = e.get(ix);
+    	}
+    	
+    	return x;
     }
     
     /*
@@ -33,7 +69,16 @@ public class Exercises {
     arraySort([8, 13, 9, 12]) → [8, 9, 12, 13]        
     */
     public int[] arraySort(int[] nums) {
-        return null;
+        int[] nums2 = new int[nums.length];
+        for(int i = 0; i < nums.length; i++){
+        	if(nums[i] > nums2[i]){
+        		nums2[i + 1] = nums[i];
+        	}
+        	else if(nums[i] < nums2[i]){
+        		nums2[i - 1] = nums[i];
+        	}
+        }
+    	return null;
     }
 
     /*
@@ -44,7 +89,20 @@ public class Exercises {
     blackjack(19, 22) → 19
     */
     public int blackjack(int a, int b) {
-        return 0;
+    	 if(a > 21 && b > 21){
+         	return 0;
+         }
+    	 else if((a > b && a <= 21) || (a < b && b > 21)){
+        	return a;
+        }
+        else if((b > a && b <= 21) || (b < a && a > 21)) {
+        	return b;
+        }
+       
+        else if(a == b && a < 21 && b < 21){
+        	return a;
+        }
+    	return 0;
     }
     
     /*
@@ -56,7 +114,20 @@ public class Exercises {
     closeFar(4, 1, 3) → true
     */
     public boolean closeFar(int a, int b, int c) {
-        return false;
+      if(Math.abs(b - a) <= 1){
+    	  if(Math.abs(c - b) >= 2 && Math.abs(c - a) >= 2){
+    		  return true;
+    	  }
+      }
+      else if(Math.abs(c - a) <= 1){
+    	  if(Math.abs(b - c) >= 2 && Math.abs(b - a) >= 2){
+    		  return true;
+    	  }
+      }
+      else{
+      }
+    	return false;
+      
     }
 
     /*
@@ -67,8 +138,29 @@ public class Exercises {
     countClumps([1, 1, 1, 1, 1]) → 1
     */
     public int countClumps(int[] nums) {
-        return 0;
-    }
+       int counter = 0;
+    	for(int i = 0; i < nums.length - 1; i++){
+        	
+    		if(nums[i] == nums[i+1]){
+    			counter++;
+    		}
+    		else if(nums[0] == nums[i+1]){
+        	}
+    		else if(nums[i] != nums[i+1]){
+    			
+    		}
+    		else{	counter++;
+    		}
+    	}return counter;
+       }
+    
+    	
+    
+    
+        	
+    	
+    	
+    
 
     /*
     CHALLENGE: Write the algorithm to find a sorted list of all the unique permutations of a string.  
