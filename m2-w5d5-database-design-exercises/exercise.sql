@@ -143,3 +143,5 @@ SELECT * FROM employee
 COMMIT;
 
 ROLLBACK;
+
+select * from city where countrycode = 'CAN'
