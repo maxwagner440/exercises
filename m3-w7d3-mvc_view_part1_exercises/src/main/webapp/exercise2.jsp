@@ -18,6 +18,17 @@
 				
 				See exercise2-fibonacci.png for example output
 			 --%>
+			 <c:set var="num1" value="1"/>
+			 <c:set var="num2" value="2"/>
+			 <li>1</li>
+			 <li>2</li>
+			 <c:forEach begin="1" end="25" var="num">
+			 	<c:set var="num3" value="${num1 + num2}"/>
+			 	<li><c:out value="${num3}"/></li>
+			 	<c:set var="num1" value="${num2}"/>
+			 	<c:set var="num2" value="${num3 }"/>
+			 	
+			 </c:forEach>
 		</ul>
 	</body>
 </html>
