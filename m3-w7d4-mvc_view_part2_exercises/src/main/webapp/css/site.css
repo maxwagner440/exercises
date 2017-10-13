@@ -56,3 +56,8 @@ section {
 	background-color: #FFF;
 	border-radius: 7px;
 }
+.picformat{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	grid-template-rows: 20% 20% 20% 20% 20%
+}

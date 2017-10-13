@@ -171,8 +171,18 @@ public class Exercises {
     findPermutations("A") → {"A"}
     findPermutations("ABC") → {"ABC","ACB","BAC","BCA","CAB","CBA"}
     */
-    public List<String> findPermutations(String str)
-    {            
+    public List<String> findPermutations(String str){           
+    	int length = str.length();
+    	int counter = 1;
+    	for(int i = 0; i < length - 1; i++){
+    		String temp = str.substring(i, i+1);
+
+    		counter = counter * ( i + 1 );
+    		for(int x = 0; x < counter; x++){
+        		char[] nChar = temp;
+    		}
+    	}
+    	
         return null;
     }
 
@@ -185,6 +195,18 @@ public class Exercises {
     * has271([2, 7, 1]) → true     
     */
     public boolean has271(int[] nums) {
+    	for(int i = 0; i < nums.length - 1; i++){
+    		if(nums.length < 3){
+    			return false;
+    		}
+    		else if(nums[i + 1] == (nums[i] + 5) && (nums[i + 2] >= (nums[i] - 3)) && (nums[i + 2] <= (nums[i] + 1))){
+    			return true;
+    		}
+    		else{
+    			
+    		}
+    	}
+    	
         return false;
     }
 
@@ -197,6 +219,12 @@ public class Exercises {
     lastDigit(23, 19, 3) → true
     */
     public boolean lastDigit(int a, int b, int c) {
+    	int x = a % 10;
+    	int y = b % 10;
+    	int z = c % 10;
+    	if(x == y || x == z || y == z){
+    		return true;
+    	}
         return false;
     }
 
@@ -210,7 +238,22 @@ public class Exercises {
     makeBricks(3, 2, 10) → true
     */
     public boolean makeBricks(int small, int big, int goal) {
-        return false;
+        int leftOver = goal % 5;
+        int newBig = big * 5;
+        int div = goal - newBig;
+        if(big == 0 && small <= goal || div > small){
+        	return false;
+        }
+        else if(leftOver <= small){
+        	return true;
+        }
+        else if(big == 0 && small >= goal){
+        	return true;
+        }
+        else if(newBig == goal || newBig + small == goal){
+        	return true;
+        }
+    	return false;
     }
 
     /*
@@ -221,7 +264,41 @@ public class Exercises {
     maxBlock("") → 0
     */
     public int maxBlock(String str) {
-        return 0;
+    	int counter = 1;
+    	int counter2 = 1;
+    	int[] arrInt = null;
+    	for(int i = 0 ; i < str.length() - 1 ; i++){
+    		String one = str.substring(i, i+1);
+    		String two = str.substring(i+1, i+2);
+    		if( one.equalsIgnoreCase(two)){
+    			counter++;
+    			counter2++;
+    			}
+    		else if( !one.equalsIgnoreCase(two) ){
+    			if(str.substring(i+1, i+2).equalsIgnoreCase(str.substring(i+2, i+3))){
+    				counter = 1;
+    				counter2 = 1;
+    			}
+    			else{
+    				for(int e = 0; e < 1; e++){
+    					arrInt[e] = counter;	
+    				}
+    				
+    			}
+    			
+    			}
+    		else{
+    			
+    		}
+    		for(int j = 0; j < arrInt.length; j++){
+    			if(arrInt[j] > counter2){
+    				return arrInt[j];
+    			}
+    		}
+    			
+    	}return counter;
+    	
+       
     }
 
     /*
