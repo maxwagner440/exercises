@@ -20,10 +20,12 @@
         
     </nav>
     <section id="main-content">
-		<div class="picformat">
-		<c:forEach items="${products}" var="product">
 
+		<c:forEach items="${products}" var="product">
+		<div class="container-format">
+			<div class="pic-format">
 			<img src="img/${product.imageName}">
+			</div>
 		<div>
 			<c:out value="${product.name}"/>
 			<c:out value="${product.manufacturer}"/>
@@ -31,8 +33,10 @@
 			<c:out value="${product.weightInLbs }"/>
 			<c:out value="${product.averageRating }"/>
 		</div>
+		
+ 	</div>
 		</c:forEach> 
-       </div>
+      
 
     </section>
 </body>
