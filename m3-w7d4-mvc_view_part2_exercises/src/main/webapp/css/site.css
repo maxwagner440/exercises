@@ -48,13 +48,19 @@ nav li a:hover {
 section {
 	clear: both;
 	display: block;
-	width: 80%;
+	width: 100%;
 	margin: 20px auto;
 	vertical-align: top;
 	text-align: center;
 	min-height: 450px;
 	background-color: #FFF;
 	border-radius: 7px;
+}
+h2{
+	text-align: center;
+	font-size: 2.5em;
+	padding-top: 20px;
+	padding-bottom: 45px; 
 }
 .container-format{
 	display:flex;
@@ -67,4 +73,53 @@ section {
 .pic-format{
 	display: flex;
 	
+}
+.flexContainer2 {
+	display: flex;
+	padding-right: 140px;
+	padding-bottom: 40px;
+}
+#recipeTable {
+	padding-top:-545px;
+	display: flex;
+	justify-content: center;
+	align-items: center ;
+	padding-right:100px;
+}
+tr.greySpace {
+	background-color: #d9d9d9;
+}
+tr.greySpace > th {
+	background-color: white;
+}
+.rating {
+	width: 110px;
+	text-align: center;
+	
+}
+.toyItem{
+	height:100px;
+	width: 150px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.flexContainer {
+	display: flex;
+	padding-left: 140px;
+	padding-bottom: 40px;
+	flex-wrap: wrap;
+}
+.toyItem2{
+	height:250px;
+	width: 300px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top:40px;
+}
+.name{
+	font-size: 1.5em;
+	color: black;
+}
+.details{
+	font-size: 1.2em;
 }
