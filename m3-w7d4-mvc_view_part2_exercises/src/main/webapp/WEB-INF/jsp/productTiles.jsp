@@ -16,7 +16,7 @@
 					<div >
 						<div>
 						<div class="name">
-						<c:url var="productD" value="/productDetails?productId=${product.productId}"/>
+						<c:url var="productD" value="/productDetail?productId=${product.productId}"/>
 					<a href= "${productD}"><c:out value="${product.name}" /></a>
 					</div>
 					<div class="details"><c:out value="${product.manufacturer}" /></div><br><br>

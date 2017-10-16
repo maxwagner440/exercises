@@ -123,3 +123,36 @@ tr.greySpace > th {
 .details{
 	font-size: 1.2em;
 }
+
+
+
+.img-align{
+	position: relative;
+	float: left;
+}
+text
+
+#left{
+	text-align: left;
+	margin: 0 10px;
+}
+.left2{
+	margin: 0 10px;
+	text-align: left;
+	font-size: 2em;
+}
+.font-adjust{
+	position: relative;
+	bottom: 70px;
+}
+
+.within{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.type{
+	font-size: 1.2em
+}
+.larger{
+	font-size: 20px;
+}

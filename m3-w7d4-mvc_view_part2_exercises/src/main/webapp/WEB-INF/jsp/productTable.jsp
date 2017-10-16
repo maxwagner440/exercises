@@ -11,7 +11,7 @@
 			<tr>
 				<th>&nbsp; </th>
 				<c:forEach items="${products}" var="product">
-					<c:url var="productI" value="/productDetails?productId=${product.productId}"/>
+					<c:url var="productI" value="/productDetail?productId=${product.productId}"/>
 					<td><a href= "${productI}"><img src="img/${product.imageName}" class="toyItem"/></a></td>
 				</c:forEach>
 			</tr>
