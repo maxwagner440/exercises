@@ -17,7 +17,7 @@
 	</div>
 	<div>
 		<label for="rating">Rating:</label> <br>
-		<input type="number" name="rating" id="rating" min=1 max=5/>
+		<input type="number" name="rating" id="rating" min="1" max="5"/>
 	</div>
 	<div>
 		<label for="title">Review Title:</label> <br>

@@ -23,9 +23,9 @@ public class ReviewController {
 	ReviewDao reviewDao;
 
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayGreeting(HttpSession session) {
+	public String displayGreeting(ModelMap modelHolder) {
 		List<Review> allReviews = reviewDao.getAllReviews();
-		session.setAttribute("reviews", allReviews);
+		modelHolder.put("reviews", allReviews);
 		return "productReview";
 	}
 	
@@ -37,13 +37,9 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(path="/createPost", method=RequestMethod.POST)
-	public String createThePost(@RequestParam String username, 
-								@RequestParam int rating, 
-								@RequestParam String title, 
-								@RequestParam String text,
+	public String createThePost(@ModelAttribute Review review,
 								ModelMap modelHolder){
-		Review review = new Review(username, rating, title, text);
-		review.setDateSubmitted(LocalDateTime.now());
+		
 		reviewDao.save(review);
 		return "redirect:/";
 	}
