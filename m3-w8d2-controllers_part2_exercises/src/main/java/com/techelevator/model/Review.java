@@ -10,6 +10,15 @@ public class Review {
 	private String text;
 	private LocalDateTime dateSubmitted;
 	
+	public Review(){
+		
+	}
+	public Review(String username, int rating, String title, String text) {
+		this.username = username;
+		this.rating = rating;
+		this.title = title;
+		this.text = text;
+	}
 	public Long getId() {
 		return id;
 	}
