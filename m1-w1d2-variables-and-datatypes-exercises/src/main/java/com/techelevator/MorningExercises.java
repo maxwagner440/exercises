@@ -126,6 +126,22 @@ public class MorningExercises {
 		/*
 		26. Now set doneWithExercise to true.
 		*/
+	String[] wordListNoun = {"Dog", "Donkey", "Woman", "Meerkat", "Gorilla", "Monkey", "Arapima"};
+	String[] wordListVerb = {"Bounced", "Jumped", "Sucked", "Trampled an Old Woman", "Went Under", "Ran", "Did"};
+	String[] wordListAdverb = {"Hard", "Fast", "Strong", "Passionately", "Lovingly", "Timely", "Softly"};
+	
+	int nounLength = wordListNoun.length;
+	int verbLength = wordListVerb.length;
+	int adverbLength = wordListAdverb.length;
+	
+	int rand1 = (int) (Math.random() * nounLength);
+	int rand2 = (int) (Math.random() * verbLength);
+	int rand3 = (int) (Math.random() * adverbLength);
+	
+	String madLib = "The" + " " + wordListNoun[rand1] + " " + wordListVerb[rand2] + " " + wordListAdverb[rand3] + ".";
+	
+	System.out.println(madLib);
+	
 		
 	}
 

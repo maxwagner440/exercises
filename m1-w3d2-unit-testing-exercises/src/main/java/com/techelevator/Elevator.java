@@ -15,7 +15,7 @@ public class Elevator {
      */
     public Elevator(int shaftNumber, int totalNumberOfFloors) {
         this.shaftNumber = shaftNumber;
-        this.numberOfLevels = totalNumberOfFloors;
+    	this.numberOfLevels = totalNumberOfFloors;
         this.currentLevel = 1;
     }
 
@@ -86,34 +86,25 @@ public class Elevator {
      * @param desiredFloor Desired floor to go to
      * @return If the elevator was able to move up
      */
-    public boolean GoUp(int desiredFloor)
-    {
-        currentLevel = desiredFloor;
-
-        if (desiredFloor > currentLevel && desiredFloor <= numberOfLevels && doorOpen)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    public void goUp(int desiredFloor){
+		if(doorOpen == false){
+				if(currentLevel < numberOfLevels && desiredFloor < numberOfLevels){
+			currentLevel = desiredFloor;
+				}
+		}
+	}
 
     /**
      * Moves the elevator down, as long as the door is closed and desired floor is lower than current but not past 1 
      * @param desiredFloor Floor to go to
      * @return True if possible to move
      */
-    public boolean GoDown(int desiredFloor)
-    {
-        if (!doorOpen && desiredFloor < currentLevel && desiredFloor > 0)
-        {
-            currentLevel -= desiredFloor;
-            return true;
-        }
+    public void goDown(int desiredFloor){
+		if(doorOpen == false){
+			if(currentLevel > 1 && desiredFloor >= 1){
+				currentLevel = desiredFloor;
+			}
+		}
 
-        return false;
     }
-
-}
+ }

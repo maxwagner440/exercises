@@ -76,9 +76,17 @@ public class SmartPhone {
     public boolean Call(String phoneNumberToCall, int numberOfMinutesToTalk)
     {                        
         onCall = true;
-        batteryCharge -= numberOfMinutesToTalk;
-
-        return true;
+        if(numberOfMinutesToTalk > getBatteryCharge() && phoneNumberToCall.length() == 10){
+        	batteryCharge = 0;
+        	return false;
+        }
+        else if(phoneNumberToCall.length() == 10){
+        	 batteryCharge -= numberOfMinutesToTalk;
+        	 return true;
+        }else{
+        	return false;
+        }
+       
     }
 
     /**
@@ -102,7 +110,7 @@ public class SmartPhone {
      */
     public void RechargeBattery()
     {
-        batteryCharge = 95;
+        batteryCharge = 100;
     }
 
 }

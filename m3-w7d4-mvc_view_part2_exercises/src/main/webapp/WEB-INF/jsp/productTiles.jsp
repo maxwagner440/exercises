@@ -1,28 +1,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
+<%@ include file = "common/header.jspf" %>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Product Tiles View</title>
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-<body>
-    <header>
-        <h1>MVC Exercises - Views Part 2: Models</h1>        
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-        </ul>
-        
-    </nav>
+
     <section id="main-content">
+<h2>Toy Department</h2>
+		<section class="flexContainer">
+
+
+			<c:forEach items="${products}" var="product">
+				<div class="recipeHolder flexContainerTile">
+
+					<img src="img/${product.imageName}" class="toyItem2" />
+					<div >
+						<div>
+						<div class="name">
+						<c:url var="productD" value="/productDetail?productId=${product.productId}"/>
+					<a href= "${productD}"><c:out value="${product.name}" /></a>
+					</div>
+					<div class="details"><c:out value="${product.manufacturer}" /></div><br><br>
+					<div class="details">$<c:out value="${product.price }"/></div>
+					<div class="details"><c:out value="${product.weightInLbs }"/></div>
+						</div>
+						<div class="flexContainerText">
+							<fmt:formatNumber maxFractionDigits="0" value="${product.averageRating}" var="formattedRating" />
+							<img src="img/${formattedRating}-star.png" class="rating" />
+							<c:out value="${recipe.ingredients.size()}" />
+							
+						</div>
+					</div>
+				</div>
+
+			</c:forEach>
+
 
        
-
-    </section>
-</body>
-</html>
+<%@ include file = "common/footer.jspf" %>
