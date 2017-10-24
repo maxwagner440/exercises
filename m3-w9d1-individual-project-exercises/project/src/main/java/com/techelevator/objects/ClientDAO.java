@@ -8,9 +8,11 @@ public interface ClientDAO {
 	public void eat(BigDecimal intakeCalories);
 	public void doCardio();
 	public String finishDay();
-
-	public BigDecimal calculateCaloricNeeds();
-	public List<Integer> getAllConsumedEntries();
-	public List<Integer> getAllNeededEntries();
 	public List<Client> getAllClients();
+	public Client getClientByUsername(String username);
+	
+	//
+//	public BigDecimal calculateCaloricNeeds();
+//	public List<Integer> getAllConsumedEntries();
+//	public List<Integer> getAllNeededEntries();
 }

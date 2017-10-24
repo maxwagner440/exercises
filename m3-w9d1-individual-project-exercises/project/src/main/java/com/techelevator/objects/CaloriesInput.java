@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class Calories {
+public class CaloriesInput {
 
 	private BigDecimal caloriesConsumed;
 	private BigDecimal caloriesNeeded;

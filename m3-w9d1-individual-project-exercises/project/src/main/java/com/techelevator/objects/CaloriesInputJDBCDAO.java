@@ -11,19 +11,19 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CaloriesJDBCDAO implements CaloriesDAO {
+public class CaloriesInputJDBCDAO implements CaloriesInputDAO {
 
 	
 	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	public CaloriesJDBCDAO(DataSource dataSource) {
+	public CaloriesInputJDBCDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	@Override
-	public List<Calories> getAllEntries() {
-		List<Calories> allEntries = new ArrayList<Calories>();
+	public List<CaloriesInput> getAllEntries() {
+		List<CaloriesInput> allEntries = new ArrayList<CaloriesInput>();
 		String sqlSelectCals = "SELECT * FROM client_calories WHERE client_id=1";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectCals);
 		while(results.next()){
@@ -33,11 +33,23 @@ public class CaloriesJDBCDAO implements CaloriesDAO {
 	}
 
 	
-	public Calories mapRowToCalories(SqlRowSet row) {
-		Calories entry = new Calories();
+	public CaloriesInput mapRowToCalories(SqlRowSet row) {
+		CaloriesInput entry = new CaloriesInput();
 		entry.setCaloriesConsumed(row.getBigDecimal("calories_consumed"));
 		entry.setCaloriesNeeded(row.getBigDecimal("calories_needed"));
 		entry.setDate(row.getDate("todays_date"));
 		return entry;
+	}
+
+	@Override
+	public List<CaloriesInput> getAllEntriesByUsername(String username) {
+		List<CaloriesInput> allClientEntries = new ArrayList<CaloriesInput>();
+		String sqlSelectCals = "SELECT * FROM client_calories WHERE client_id = (SELECT client_id FROM client WHERE username = ?)";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectCals, username);
+		while(results.next()){
+			allClientEntries.add(mapRowToCalories(results));
+		}
+		return allClientEntries;
+		
 	}
 }

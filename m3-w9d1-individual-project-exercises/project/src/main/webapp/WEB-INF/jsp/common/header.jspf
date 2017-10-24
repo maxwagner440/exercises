@@ -34,8 +34,8 @@
                 <ul class="nav navbar-nav">
                     <c:url value="/newLog" var="newLog"/>
                     <li><a href="${newLog}">Create New Log</a></li>
-                    <c:url value="/allLogs" var="allLogs"/>
-                    <li><a href="${allLogs}">Past Logs</a></li>
+                    <c:url value="/allLogsVerify" var="allLogsVerify"/>
+                    <li><a href="${allLogsVerify}">Past Logs</a></li>
 
                 </ul>
             </div>

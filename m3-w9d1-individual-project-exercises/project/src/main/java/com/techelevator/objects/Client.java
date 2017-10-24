@@ -1,6 +1,9 @@
 package com.techelevator.objects;
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Client {
 
 	private BigDecimal weightInLbs;
@@ -8,7 +11,15 @@ public class Client {
 	private BigDecimal height;
 	private BigDecimal age;
 	private boolean isFemale = true;
+	private String firstName;
+	private String lastName;
+	
+	@NotBlank(message="must fill out email") @Email(message="email is required")
 	private String username;
+	
+	@NotBlank(message="wrong password, please try again")
+	private String password;
+	
 	private BigDecimal BMR;
 	
 	
@@ -104,6 +115,66 @@ public class Client {
 	public void setBMR(BigDecimal BMR) {
 		this.BMR = BMR;
 		
+	}
+
+
+
+
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+
+
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+
+
+
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+
+
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 

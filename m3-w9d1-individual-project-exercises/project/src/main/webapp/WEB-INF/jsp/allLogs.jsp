@@ -8,7 +8,7 @@
 <h2>Past Logs</h2>
 
 	<c:url var="logUrl" value="/allLogs"/>
-	<form:form method="GET" action="${loginUrl}" modelAttribute="allLogs">
+	<form:form method="GET" action="${logUrl}" modelAttribute="allLogs">
 	
 	<c:forEach items="${allClients}" var="client">
 		<div>
