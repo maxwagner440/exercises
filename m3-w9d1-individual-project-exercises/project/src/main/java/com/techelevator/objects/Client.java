@@ -1,17 +1,36 @@
 package com.techelevator.objects;
 import java.math.BigDecimal;
 
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Client {
 
+	private Long clientId;
+	
+	@NotNull(message="must input a weight in lbs")
 	private BigDecimal weightInLbs;
+	
+	@NotNull(message="must input a weight in lbs")
 	private BigDecimal goalWeightInLbs;
+	
+	@NotNull(message="must input a height in inches")
 	private BigDecimal height;
+	
+	@NotNull(message="must input an age")
 	private BigDecimal age;
+	
+	@AssertFalse(message="must input a gender")
 	private boolean isFemale = true;
+	
+	@NotBlank(message="must fill out first name")
 	private String firstName;
+	
+	@NotBlank(message="must fill out last name")
 	private String lastName;
 	
 	@NotBlank(message="must fill out email") @Email(message="email is required")
@@ -20,16 +39,11 @@ public class Client {
 	@NotBlank(message="wrong password, please try again")
 	private String password;
 	
-	private BigDecimal BMR;
+//	private BigDecimal BMR;
 	
 	
 	public Client(){
 	}
-	
-	
-	
-	
-	
 	
 	
 //	public void doCardio(BigDecimal calsBurnt, String modality){
@@ -55,7 +69,7 @@ public class Client {
 		isFemale = false;
 	}
 	
-	public boolean isFemale() {
+	public boolean getIsFemale() {
 		return isFemale;
 	}
 
@@ -111,11 +125,6 @@ public class Client {
 
 
 
-
-	public void setBMR(BigDecimal BMR) {
-		this.BMR = BMR;
-		
-	}
 
 
 
@@ -175,6 +184,16 @@ public class Client {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+
+	public Long getClientId() {
+		return clientId;
+	}
+
+
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
 	}
 
 

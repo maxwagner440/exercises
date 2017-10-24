@@ -7,7 +7,21 @@
 <h2>Let's See What the Damage is...</h2>
 
 	<c:url var="logUrl" value="/newLog"/>
-	<form:form method="POST" action="${loginUrl}" modelAttribute="newLog">
+	<form:form method="POST" action="${logUrl}" modelAttribute="newLog">
+	
+
+	
+	<label for="caloriesConsumed">Total Calories Eaten for the Day:</label>
+	<form:input path="caloriesConsumed"/>
+	<form:errors path="caloriesConsumed" cssClass="error"/>
+	
+	
+	<input type="submit" value="Submit"/>
+	
+	
+	
+	
+	
 	
 	
 	</form:form>

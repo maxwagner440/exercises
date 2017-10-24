@@ -1,5 +1,6 @@
 package com.techelevator.objects;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class CaloriesInputJDBCDAO implements CaloriesInputDAO {
 	@Override
 	public List<CaloriesInput> getAllEntries() {
 		List<CaloriesInput> allEntries = new ArrayList<CaloriesInput>();
-		String sqlSelectCals = "SELECT * FROM client_calories WHERE client_id=1";
+		String sqlSelectCals = "SELECT * FROM client_calories";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectCals);
 		while(results.next()){
 			allEntries.add(mapRowToCalories(results));
@@ -32,6 +33,11 @@ public class CaloriesInputJDBCDAO implements CaloriesInputDAO {
 		return allEntries;
 	}
 
+	@Override
+	public void saveNewEntry(CaloriesInput input, Long clientId){
+		String sqlInputEntry = "INSERT INTO client_calories (client_id, todays_date, calories_consumed, calories_needed) VALUES (?, NOW(), ?, ?)";
+		jdbcTemplate.update(sqlInputEntry, clientId, input.getCaloriesConsumed(), input.getCaloriesNeeded());
+	}
 	
 	public CaloriesInput mapRowToCalories(SqlRowSet row) {
 		CaloriesInput entry = new CaloriesInput();

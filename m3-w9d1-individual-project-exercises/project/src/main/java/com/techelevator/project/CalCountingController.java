@@ -1,6 +1,7 @@
 package com.techelevator.project;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -37,47 +38,76 @@ public class CalCountingController {
 	CaloriesInputDAO caloriesDao;
 	
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayGreeting() {
-		
+	public String displayGreeting(ModelMap modelHolder) {
+		if(! modelHolder.containsAttribute("Verify")){
+			modelHolder.put("Verify", new Client());
+		}
 		return "home";
 	}
 	
+	@RequestMapping(path="/", method=RequestMethod.POST)
+	public String userLogin(@RequestParam String username, @RequestParam String password, HttpSession session) {
+		Client client = clientDao.getClientByUsername(username);
+		
+//		if(client.getPassword().equals(password)){
+			session.setAttribute("client", client);
+//		}
+//		else{
+//			return "redirect:/";
+//		}
+		
+		return "redirect:/allLogs";
+	}
+
+	
 	@RequestMapping(path="/newLog", method=RequestMethod.GET)
-	public String gotoNewLogEntry(ModelMap modelHolder){
+	public String gotoNewLogEntry(ModelMap modelHolder, HttpSession session){
 		if(! modelHolder.containsAttribute("newLog")){
-			modelHolder.put("newLog", new Client());
+			modelHolder.put("newLog", new CaloriesInput());
 		}
+		if(session.getAttribute("client") == null){
+			return "redirect:/";
+		}
+		
 		return "newLog";
 	}
 	
 	@RequestMapping(path="/newLog", method=RequestMethod.POST)
-	public String createEntryInDatabase(){
-		return "redirect:currentLog";
+	public String createEntryInDatabase(@RequestParam BigDecimal caloriesConsumed, HttpSession session){
+		Client client = (Client) session.getAttribute("client");
+		CaloriesInput input = new CaloriesInput();
+		input.setCaloriesNeeded(clientDao.calculateCaloricNeeds(client.getClientId()));
+		input.setCaloriesConsumed(caloriesConsumed);
+		caloriesDao.saveNewEntry(input, client.getClientId());
+		return "redirect:/allLogs";
 	}
 	
-	@RequestMapping(path="/allLogsVerify", method=RequestMethod.GET)
-	public String displayUsernameInput(ModelMap modelHolder){
-		if(! modelHolder.containsAttribute("allLogsVerify")){
-			modelHolder.put("allLogsVerify", new Client());
+	@RequestMapping(path="/createNewProfile", method=RequestMethod.GET)
+	public String displayCreateNewProfile(ModelMap modelHolder, HttpSession session){
+		if(! modelHolder.containsAttribute("createNewProfile")){
+			modelHolder.put("createNewProfile", new Client());
+		}
+		if(session.getAttribute("client") == null){
+			return "redirect:/";
 		}
 		
-		return "allLogsVerify";
+		return "createNewProfile";
 	}
-	@RequestMapping(path="/allLogsVerify", method=RequestMethod.POST)
-	public String verifyUserId(HttpSession session, @RequestParam String username){
-		Client client = clientDao.getClientByUsername(username);
-		session.setAttribute("allLogs", client);
+	
+	@RequestMapping(path="/createNewProfile", method=RequestMethod.POST)
+	public String creatingNewProfile(){
 		
-		return "redirect:/allLogs";
+		return "redirect:/newLog";
 	}
 	
 	@RequestMapping(path="/allLogs", method=RequestMethod.GET)
 		public String showAllLogs(ModelMap modelHolder, HttpSession session){
-		if(session.getAttribute("allLogs") == null){
-			session.setAttribute("allLogs", new Client());
-		}
 		
-		Client client = (Client) session.getAttribute("allLogs");
+		
+		Client client = (Client) session.getAttribute("client");
+		if(session.getAttribute("client") == null){
+			return "redirect:/";
+		}
 		
 		List<CaloriesInput> input = caloriesDao.getAllEntriesByUsername(client.getUsername());
 		
