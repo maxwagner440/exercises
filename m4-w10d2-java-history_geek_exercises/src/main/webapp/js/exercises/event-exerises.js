@@ -26,7 +26,20 @@ $(document).ready(function () {
 	});
 	
 	
-	
+	$("tbody").on('keypress', function(){
+		if(event.key === 'ArrowDown'){
+			$('')
+		}
+		else if(event.key === 'ArrowUp'){
+			
+		}
+		else if(event.key === 'ArrowLeft'){
+			
+		}
+		else if(event.key === 'ArrowRight'){
+			
+		}
+	})
 });
 
 function grandTotal(){
