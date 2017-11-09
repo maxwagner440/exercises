@@ -44,15 +44,15 @@ $(document).ready(function () {
 
 function grandTotal(){
 	var subtotal = $('#subtotal span').text();
-	subtotal = parseFloat(subtotal.substring(1, subtotal.length));
+	subtotal = parseFloat(subtotal.substring(1, subtotal.length)).toFixed('2');
 	
 	var tax = $('#tax span').text();
-	tax = parseFloat(tax.substring(1, tax.length));
+	tax = parseFloat(tax.substring(1, tax.length)).toFixed('2');
 	
 	var shipping = $('#shipping span').text();
-	shipping = parseFloat(shipping.substring(1, shipping.length));
+	shipping = parseFloat(shipping.substring(1, shipping.length)).toFixed('2');
 	
 	var grandTotal = subtotal + tax + shipping;
-	$('#order-summary #grandtotal span').text('$' + grandTotal);
+	$('#order-summary #grandtotal span').text('$' + grandTotal).toFixed('2');
 	
 }
