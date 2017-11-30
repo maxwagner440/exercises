@@ -1,5 +1,7 @@
 package com.techelevator.critter.model;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -111,9 +113,9 @@ public class JDBCMessageDAO implements MessageDAO {
 	public List<Message> getMessagesSentByUser(String userName) {
 		String sqlSelectMessagesSentByUser = "SELECT * "+
 										     "FROM message "+
-										     "WHERE sender_name = '"+userName+"' "+
+										     "WHERE sender_name = ? "+
 										     "ORDER BY create_date DESC ";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectMessagesSentByUser);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectMessagesSentByUser, userName);
 		return mapRowSetToMessages(results);
 	}
 
@@ -143,4 +145,25 @@ public class JDBCMessageDAO implements MessageDAO {
 		return id;
 	}
 
+	@Override
+	public void deleteMessage(Long id) {
+		String sqlDelete = "DELETE FROM message WHERE message_id = ?";
+		jdbcTemplate.update(sqlDelete, id);
+		
+	}
+
+
+	@Override
+	public Message getMessageByUserId(Long Id) {
+		String sqlGetMessage = "SELECT * FROM message WHERE message_id = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlGetMessage, Id);
+		Message newMessage = new Message();
+		newMessage.setFromUsername(result.getString("fromUserName"));
+		newMessage.setToUsername(result.getString("toUserName"));
+		newMessage.setId(result.getLong("id"));
+		newMessage.setText(result.getString("text"));
+		newMessage.setCreateTime(result.getTimestamp("create_date").toLocalDateTime());
+		newMessage.setPrivate(result.getBoolean("isPrivate"));
+		return newMessage;
+	}
 }

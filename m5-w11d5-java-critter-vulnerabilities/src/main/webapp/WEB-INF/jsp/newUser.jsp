@@ -4,7 +4,11 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-	
+		
+		$.validator.addMethod('capitals', function(value){
+			return value.match(/[A-Z]/);
+		});
+		
 		$("form").validate({
 			
 			rules : {
@@ -12,14 +16,21 @@
 					required : true
 				},
 				password : {
-					required : true
+					required : true,
+					minlength: 15,
+					capitals: true,
 				},
 				confirmPassword : {
 					required : true,		
 					equalTo : "#password"  
 				}
 			},
-			messages : {			
+			messages : {	
+				password : {
+					minlength: "Password too short, make it at least 15 characters",
+					capitals: "Please include a capital letter",
+					
+				},
 				confirmPassword : {
 					equalTo : "Passwords do not match"
 				}
@@ -31,6 +42,7 @@
 
 <c:url var="formAction" value="/users" />
 <form method="POST" action="${formAction}">
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN }"/>
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">

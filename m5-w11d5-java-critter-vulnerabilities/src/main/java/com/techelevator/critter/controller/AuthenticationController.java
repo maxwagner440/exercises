@@ -1,5 +1,6 @@
 package com.techelevator.critter.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,14 @@ public class AuthenticationController {
 	@RequestMapping(path="/login", method=RequestMethod.POST)
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
-						ModelMap model) {
+						 HttpServletRequest request, @RequestParam(required=false) String destination){
 		if(userDAO.searchForUsernameAndPassword(userName, password)) {
-			model.put("currentUser", userName);
+			//invalidates their current session and then creates new session
+			request.changeSessionId();
+			request.getSession().setAttribute("currentUser", userName);
+			if(destination!= null &&  ! destination.isEmpty()){
+				return "redirect:" + destination;
+			}
 			return "redirect:/users/"+userName;
 		} else {
 			return "redirect:/login";
@@ -44,6 +50,8 @@ public class AuthenticationController {
 	public String logout(ModelMap model, HttpSession session) {
 		model.remove("currentUser");
 		session.removeAttribute("currentUser");
+		//invalidates their current session and then creates new session
+		session.invalidate();
 		return "redirect:/";
 	}
 }
